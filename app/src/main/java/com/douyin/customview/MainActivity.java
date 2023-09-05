@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.douyin.customview.flower.FlowerActivity;
+import com.douyin.customview.htmlBeatifulfirework.BeatifulFireworkActivity;
+import com.douyin.customview.htmlBeatifulfirework.FireWorkView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
         setContentView(R.layout.activity_main);
-        Intent intent = new Intent(this, FlowerActivity.class);
+        Intent intent = new Intent(this, BeatifulFireworkActivity.class);
         startActivity(intent);
         mBombView = (BombView) findViewById(R.id.bombview);
 

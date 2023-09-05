@@ -88,7 +88,7 @@ public class HeartView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     //开启一个新线程绘制
-    private void drawOnNewThread() {
+    public void drawOnNewThread() {
         new Thread() {
             @Override
             public void run() {
@@ -109,7 +109,7 @@ public class HeartView extends SurfaceView implements SurfaceHolder.Callback {
                     }
                     drawHeart();
                     try {
-                        sleep(20);
+                        sleep(50);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -165,7 +165,10 @@ public class HeartView extends SurfaceView implements SurfaceHolder.Callback {
         offsetY = height / 2 - 55;
         bm = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
         canvas = new Canvas(bm);
-        drawOnNewThread();
+
+            drawOnNewThread();
+
+
     }
 
     @Override
