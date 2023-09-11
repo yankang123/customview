@@ -1,4 +1,4 @@
-package com.douyin.customview;
+package com.douyin.customview.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,6 +17,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
+import com.douyin.customview.R;
 import com.douyin.customview.utils.BitmapUtil;
 import com.douyin.customview.utils.WeakRefHandler;
 

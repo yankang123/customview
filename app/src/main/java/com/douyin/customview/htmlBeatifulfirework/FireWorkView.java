@@ -11,9 +11,9 @@ import androidx.annotation.Nullable;
 
 public class FireWorkView extends View {
     Paint paint;
-    int x = 100;
-    int y = 100;
-
+    int x = 300;
+    int y = 300;
+int radius =30;
     public FireWorkView(Context context) {
         super(context);
 
@@ -26,21 +26,14 @@ public class FireWorkView extends View {
 
     public FireWorkView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        paint = new Paint(); //设置一个笔刷大小是3的黄色的画笔
-        paint.setColor(Color.YELLOW);
+        paint = new Paint(); //设置一个笔刷大小是3的红色的画笔
+        paint.setColor(Color.RED);
         paint.setStrokeJoin(Paint.Join.ROUND);
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setStrokeWidth(3);
     }
 
-    public FireWorkView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        paint = new Paint(); //设置一个笔刷大小是3的黄色的画笔
-        paint.setColor(Color.YELLOW);
-        paint.setStrokeJoin(Paint.Join.ROUND);
-        paint.setStrokeCap(Paint.Cap.ROUND);
-        paint.setStrokeWidth(3);
-    }
+
 
 
     @Override
@@ -53,7 +46,6 @@ public class FireWorkView extends View {
     public void drawFires(Canvas canvas) {
         // 初始半径，以及粒子数量
         int count = 10;
-        int radius = 30;
         if (canvas != null) {
             for (int i = 0; i < count; i++) {
                 double angle = 360.0 / count * i;
@@ -61,11 +53,13 @@ public class FireWorkView extends View {
                 int moveX = (int) (x + Math.cos(radians) * radius);
                 int moveY = (int) (y + Math.sin(radians) * radius);
 
-                canvas.drawCircle(moveX, moveY, 2, paint);
+                canvas.drawCircle(moveX, moveY, 5, paint);
             }
 
         }
     }
-
+public void setRadius(int radius){
+        this.radius = radius;
+}
 
 }

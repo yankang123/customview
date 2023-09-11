@@ -1,4 +1,4 @@
-package com.douyin.customview;
+package com.douyin.customview.view;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;

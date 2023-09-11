@@ -1,5 +1,5 @@
 
-package com.douyin.customview;
+package com.douyin.customview.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,6 +17,8 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+
+import com.douyin.customview.R;
 
 import java.util.Collections;
 import java.util.LinkedList;

@@ -4,9 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.douyin.customview.flower.FlowerActivity;
 import com.douyin.customview.htmlBeatifulfirework.BeatifulFireworkActivity;
-import com.douyin.customview.htmlBeatifulfirework.FireWorkView;
+import com.douyin.customview.view.BombView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Intent intent = new Intent(this, BeatifulFireworkActivity.class);
         startActivity(intent);
-        mBombView = (BombView) findViewById(R.id.bombview);
-
-        getUIHandler().postDelayed(task, 1000);
+//        mBombView = (BombView) findViewById(R.id.bombview);
+//
+//        getUIHandler().postDelayed(task, 1000);
     }
 
     @Override

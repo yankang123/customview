@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".htmlBeatifulfirework.BeatifulFireworkActivity">
-<com.douyin.customview.htmlBeatifulfirework.FireWorkView
+<com.douyin.customview.htmlBeatifulfirework.FireworksView
+
+    android:id="@+id/surfaceView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"></com.douyin.customview.htmlBeatifulfirework.FireWorkView>
+    android:layout_height="match_parent"></com.douyin.customview.htmlBeatifulfirework.FireworksView>
 </androidx.constraintlayout.widget.ConstraintLayout>
