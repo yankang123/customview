@@ -2,7 +2,10 @@ package com.douyin.customview.htmlBeatifulfirework;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -22,7 +25,10 @@ public class FireworksView extends SurfaceView implements SurfaceHolder.Callback
     Paint paint;
     private int count = 10; // 粒子数量
     private int radius = 20; // 初始半径
-
+    private Paint mTrailPaint;
+    private int mTrailAlpha = 255; // 初始拖影透明度
+    private PorterDuffXfermode clearMode;
+    private PorterDuffXfermode lighterMode;
     public FireworksView(Context context) {
         super(context);
         init();
@@ -46,6 +52,9 @@ public class FireworksView extends SurfaceView implements SurfaceHolder.Callback
         this.setKeepScreenOn(true);
         paint = new Paint();
         paint.setColor(getResources().getColor(R.color.white));
+        mTrailPaint = new Paint();
+        clearMode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+        lighterMode = new PorterDuffXfermode(PorterDuff.Mode.LIGHTEN);
     }
 
     @Override
@@ -72,26 +81,40 @@ public class FireworksView extends SurfaceView implements SurfaceHolder.Callback
 
     private void draw() {
         try {
-            for (int j = 1; j < 10; j++) {
+            for (int j = 1; j < 255; j++) {
                 mCanvas = mHolder.lockCanvas();
-                mCanvas.drawColor(getResources().getColor(R.color.teal_200));
-                radius = radius + j * 10;
+                radius = radius + 2;
+                mTrailPaint.setXfermode(clearMode); // 使用 CLEAR 模式
+                mTrailPaint.setColor(Color.argb(mTrailAlpha, 255, 255, 255));
+                mTrailAlpha=mTrailAlpha - 1;
+                if (mTrailAlpha<0){
+                    mTrailAlpha =255;
+                }
+                mTrailPaint.setAlpha(mTrailAlpha);
+                mTrailPaint.setXfermode(lighterMode); // 使用 LIGHTEN 模式
+                mCanvas.drawRect(0, 0, mCanvas.getWidth(), mCanvas.getHeight(), mTrailPaint);
+
                 for (int i = 0; i < count; i++) {
-                    // 计算粒子的角度
+                    paint.setColor(Color.argb(255, 0, 0, 0));
                     float angle = 360f / count * i;
                     float radians = (float) Math.toRadians(angle);
+                    //绘制拖影
+
+
 
                     // 计算粒子的坐标
-                    float moveX = 350 + (float) (Math.cos(radians) * radius);
-                    float moveY = 350 + (float) (Math.sin(radians) * radius);
+
+                    float moveX = getWidth() / 2 + (float) (Math.cos(radians) * radius);                    float moveY = getHeight() / 2 + (float) (Math.sin(radians) * radius);
 
                     // 绘制粒子
 
-                    mCanvas.drawCircle(moveX, moveY, 5, paint);
+                    mCanvas.drawCircle(moveX, moveY, 10, paint);
+
                 }
                 mHolder.unlockCanvasAndPost(mCanvas);
-                Thread.sleep(1000);
+                Thread.sleep(2);
             }
+            mCanvas = mHolder.lockCanvas();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
